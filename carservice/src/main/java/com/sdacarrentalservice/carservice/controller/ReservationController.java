@@ -6,22 +6,18 @@ import com.sdacarrentalservice.carservice.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class ReservationController {
 
     @Autowired
     private ReservationService reservationService;
 
     // Done display List of All reservations
-    @GetMapping("/")
-    public String viewNewReservationForm(Model model)
+    @RequestMapping("/")
+    public String viewNewReservationForm(Model model) {
 
-    {
         model.addAttribute("listReservations", reservationService.getAllReservations());
         return "index";
 
