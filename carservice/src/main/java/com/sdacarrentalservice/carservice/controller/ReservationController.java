@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class ReservationController {
@@ -14,14 +15,17 @@ public class ReservationController {
     @Autowired
     private ReservationService reservationService;
 
-    // Done display List of All reservations
-    @RequestMapping("/")
+    @GetMapping("/")
     public String viewNewReservationForm(Model model) {
 
         model.addAttribute("listReservations", reservationService.getAllReservations());
         return "index";
 
     }
+
+
+    // Done display List of All reservations
+
     @GetMapping ("/showNewReservationForm")
     public String showNewReservationForm(Model model) {
         // create model attribute to bind form data
@@ -31,7 +35,7 @@ public class ReservationController {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute("reservation ") Reservation reservation ) {
+    public String save(@ModelAttribute("reservation") Reservation reservation ) {
         // save reservation to database
         reservationService.save(reservation );
         return "redirect:/";
