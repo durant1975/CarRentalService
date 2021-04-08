@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sauvegarde Reservation</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+    <h1>Reservation</h1>
+    <hr>
+    <h2>Save </h2>
+
+
+    <form action="#" th:action="@{/save}" th:object="${Reservation}" method="POST">
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{reservationId}" />
+        <input type="text" th: field ="*{customerId}"
+               placeholder=" CustomerId "class="form-control mb-4 col-4">
+
+        <input type="decimal" th: field ="*{carId}"
+               placeholder="carId" class="form-control mb-4 col-4">
+
+        <input type="text" th:field = "*{branchId}"
+               placeholder="branchId" class="form-control mb-4 col-4">
+        <input type="text" th:field = "*{bookingDate}"
+               placeholder="bookingDate" class="form-control mb-4 col-4">
+
+
+        <input type="text" th:field = "*{dateFrom}"
+               placeholder="dateFrom" class="form-control mb-4 col-4">
+
+
+
+        <input type="text" th:field = "*{totalCost}"
+               placeholder="totalCost" class="form-control mb-4 col-4">
+
+
+        <input type="text" th:field = "*{statusId}"
+               placeholder="statusId" class="form-control mb-4 col-4">
+
+
+        <input type="text" th:field = "*{dateTo}"
+               placeholder="dateTo" class="form-control mb-4 col-4">
+
+
+
+        <button type="submit" class="btn btn-info col-2"> Save </button>
+    </form>
+
+    <hr>
+
+    <a th:href = "@{/}">  Back to Reservation List</a>
+</div>
+</body>
+</html>
