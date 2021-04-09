@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Sauvegarde Reservation</title>
@@ -16,8 +16,9 @@
     <hr>
     <h2>Save </h2>
 
+<!dies>
 
-    <form action="#" th:action="@{/save}" th:object="${reservation}" method="POST">
+    <form  action="#" th:action="@{/save}" th:object="${reservation}" method="POST">
 
         <input type="text" th: field ="*{customerId}"
                placeholder=" CustomerId "class="form-control mb-4 col-4">
@@ -54,7 +55,7 @@
 
     <hr>
 
-    <a th:href = "@{/}">  Back to Reservation List</a>
+    <a th:href = "@{/}">  Back to Reservation List </a>
 </div>
 </body>
 </html>

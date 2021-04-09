@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+@Controller
 public class ReservationController {
 
     @Autowired
@@ -24,8 +24,6 @@ public class ReservationController {
     }
 
 
-    // Done display List of All reservations
-
     @GetMapping ("/showNewReservationForm")
     public String showNewReservationForm(Model model) {
         // create model attribute to bind form data
@@ -35,9 +33,10 @@ public class ReservationController {
     }
 
     @PostMapping("/save")
+
     public String save(@ModelAttribute("reservation") Reservation reservation ) {
         // save reservation to database
-        reservationService.save(reservation );
+        reservationService.save(reservation);
         return "redirect:/";
     }
 
