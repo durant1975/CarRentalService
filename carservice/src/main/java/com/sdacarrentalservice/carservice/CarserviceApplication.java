@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan({"com.sdacarrentalservice.controller"})
 public class CarserviceApplication {
 	@Autowired
 	ReservationRepository reservationRepository;

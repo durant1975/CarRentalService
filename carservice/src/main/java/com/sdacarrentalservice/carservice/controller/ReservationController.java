@@ -6,8 +6,11 @@ import com.sdacarrentalservice.carservice.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class ReservationController {
@@ -15,20 +18,28 @@ public class ReservationController {
     @Autowired
     private ReservationService reservationService;
 
-    @GetMapping("/")
+   /* @GetMapping("/")
     public String viewNewReservationForm(Model model) {
 
         model.addAttribute("listReservations", reservationService.getAllReservations());
         return "index";
 
-    }
+    }*/
 
+    @GetMapping("/")
+    public String listReservations(ModelMap modelMap)
+    {
+        List<Reservation> reservation = reservationService.getAllReservations();
+        modelMap.addAttribute("listReservations",reservation);
+        return "index";
+    }
 
     @GetMapping ("/showNewReservationForm")
     public String showNewReservationForm(Model model) {
         // create model attribute to bind form data
         Reservation reservation = new Reservation();
-        model.addAttribute("reservation", reservation );
+        System.out.println("i love everyone");
+        model.addAttribute("reservation", reservation);
         return "FormReservation";
     }
 
